@@ -1,24 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useDispatch } from 'react-redux';
+
 import './App.css';
+import { ModalController } from './components/ModalController';
+import { Button } from './components/Button';
+import { showModal } from './store/modal';
+import { ModalTypes } from './enum';
 
 function App() {
+  const dispatch = useDispatch();
+
+  const handleAdd = () => {
+    dispatch(showModal({ type: ModalTypes.AddItem, props: { name: "Test item" } }));
+  }
+
+  const handleRemove = () => {
+    dispatch(showModal({ type: ModalTypes.ConfirmDelete }));
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="App__content">
+        <div className="App__buttons">
+          <Button onClick={handleAdd}>Add</Button>
+          <Button onClick={handleRemove}>Remove</Button>
+        </div>
+      </div>
+      <ModalController />
     </div>
   );
 }

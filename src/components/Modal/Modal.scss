@@ -1,0 +1,17 @@
+.ModalDimmer {
+  background: rgba(#4b5c6b, 0.4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.Modal {
+  background: #ffffff;
+  border-radius: 15px;
+}
